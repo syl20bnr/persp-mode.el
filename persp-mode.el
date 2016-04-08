@@ -1368,11 +1368,13 @@ Return `NAME'."
               (if pwc
                   (let ((persp-add-on-switch-or-display nil))
                     (delete-other-windows)
+                    (set-window-dedicated-p nil nil)
                     (funcall persp-window-state-put-function pwc frame)
                     (when (and new-frame persp-is-ibc-as-f-supported)
                       (setq initial-buffer-choice #'(lambda () persp-special-last-buffer))))
                 (when persp-reset-windows-on-nil-window-conf
                   (delete-other-windows)
+                  (set-window-dedicated-p nil nil)
                   (persp-revive-scratch persp t)))))
           (when gr-mode
             (golden-ratio-mode 1)))))))
